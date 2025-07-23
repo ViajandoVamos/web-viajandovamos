@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexión Elemental - Viajando Vamos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --color-primario: #5D7A68; --color-secundario: #A4B494; --blanco: #FFFFFF; --gris-claro: #f4f7f6; --texto-oscuro: #2c3e50; --font-titulos: 'Merienda', cursive; --font-texto: 'Montserrat', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-texto); background-color: var(--gris-claro); color: var(--texto-oscuro); }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+        .back-link { display: block; padding: 15px; text-align: center; background-color: #e9ecef; text-decoration: none; color: var(--texto-oscuro); font-weight: 700; font-size: 0.9rem; }
+        .back-link:hover { background-color: #dee2e6; }
+        .btn-whatsapp { display: inline-block; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; background-color: #25D366; color: var(--blanco); font-size: 1.2rem; text-align: center; margin-top: 20px; transition: transform 0.3s ease; }
+        .btn-whatsapp:hover { transform: scale(1.05); }
+        .product-hero { background-size: cover; background-position: center; padding: 60px 20px; text-align: center; color: var(--blanco); }
+        .product-hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; font-weight: 900; text-transform: uppercase; margin: 0; }
+        .product-hero .subtitle { font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+        .product-hero .duration { font-size: 1.5rem; font-weight: 700; }
+        .hero-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 30px; }
+        .icon-item { text-align: center; width: 100px; } .icon-item i { font-size: 2.5rem; margin-bottom: 10px; } .icon-item span { font-size: 0.8rem; display: block; }
+        .intro-section { padding: 60px 0; background: var(--blanco); }
+        .intro-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: flex-start; }
+        .intro-description h2 { font-family: var(--font-titulos); color: var(--color-primario); } .intro-description p { margin-bottom: 15px; line-height: 1.8; }
+        .tech-box { background: var(--gris-claro); border-radius: 10px; padding: 20px; } .tech-box h3 { font-size: 1.2rem; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; } .tech-box p { margin: 0 0 10px; } .tech-box i { margin-right: 10px; color: var(--color-secundario); }
+        .tabs-section { padding: 60px 0; }
+        .tab-buttons { display: flex; justify-content: center; margin-bottom: 30px; } .tab-btn { padding: 10px 20px; border: none; background: transparent; font-size: 1.2rem; font-family: var(--font-titulos); color: #aaa; cursor: pointer; } .tab-btn.active { color: var(--color-primario); border-bottom: 3px solid var(--color-secundario); }
+        .tab-content { display: none; background: var(--blanco); padding: 40px; border-radius: 10px; } .tab-content.active { display: block; }
+        .itinerary-day { border-left: 3px solid var(--color-secundario); padding-left: 20px; margin-bottom: 30px; } .itinerary-day h4 { font-size: 1.1rem; } .itinerary-details { font-size: 0.9rem; color: #777; }
+        .gear-list { list-style: none; padding: 0; column-count: 2; column-gap: 20px; } .gear-list li { margin-bottom: 10px; }
+        .details-section { padding: 60px 0; background: var(--blanco); }
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
+        .inclusion-list { list-style: none; padding: 0; } .inclusion-list li { margin-bottom: 12px; } .inclusion-list i { margin-right: 10px; }
+        .fa-check-circle { color: #2ecc71; } .fa-times-circle { color: #e74c3c; }
+        .pricing-section { padding: 60px 0; }
+        .pricing-section .container { max-width: 800px; }
+        .pricing-grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .price-card { background: var(--blanco); padding: 20px; border-radius: 10px; text-align: center; flex-grow: 1; border: 2px solid #ddd; position: relative; overflow:hidden; }
+        .price-card:hover { border-color: var(--color-primario); }
+        .price-card p { margin: 0; } .price-card .price { font-size: 1.8rem; font-weight: 700; color: var(--color-primario); }
+        .scarcity-tag { background-color: var(--color-secundario); color: white; padding: 5px 20px; position: absolute; top: 15px; right: -50px; transform: rotate(45deg); width: 200px; text-align: center; font-size: 0.8rem; font-weight: bold; }
+        .social-proof { margin-top: 20px; font-style: italic; color: #777; }
+        .pricing-cta { text-align: center; margin-top: 30px; }
+        .faq-section { padding: 60px 0; }
+        .faq-master-container { background: var(--blanco); border-radius: 10px; margin-bottom: 10px; }
+        .faq-master-question { padding: 20px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1.5rem; font-family: var(--font-titulos); color: var(--color-primario); }
+        .faq-master-question i { transition: transform 0.3s ease; }
+        .faq-master-container.active .faq-master-question i { transform: rotate(180deg); }
+        .faq-list { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
+        .faq-master-container.active .faq-list { max-height: 1000px; /* Un valor alto para permitir el contenido */ }
+        .faq-item { border-top: 1px solid #eee; }
+        .faq-question { padding: 20px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 20px; background-color: var(--gris-claro); } .faq-answer p { padding: 20px 0; line-height: 1.7;}
+        .faq-item.active .faq-answer { max-height: 200px; } .faq-item .faq-question i { transition: transform 0.3s ease; } .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .cta-final { padding: 60px 20px; text-align: center; background:var(--blanco); }
+        .cta-final h2 { font-size: 2.5rem; }
+        #countdown { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        .time-block { background-color: var(--color-primario); color: white; padding: 10px 15px; border-radius: 5px; }
+        .time-block span { display: block; font-size: 2rem; font-weight: bold; }
+        .time-block .label { font-size: 0.8rem; }
+        @media (max-width: 768px) { .intro-grid, .details-grid { grid-template-columns: 1fr; } .gear-list { column-count: 1; } }
+    </style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "sctvxyxsbx");
+</script>
+</head>
+<body>
+    <a href="index.html#pasadias" class="back-link"><i class="fa-solid fa-arrow-left"></i> Volver a Todos los Pasadías</a>
+
+    <header class="product-hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/conexion-elemental.jpg');">
+        <div class="container"><h1>Conexión Elemental</h1><p class="subtitle">RUTAS ANCESTRALES EN PURACÉ</p><p class="duration">2 Días / 1 Noche</p>
+            <div class="hero-icons">
+                <div class="icon-item"><i class="fa-solid fa-bus"></i><span>Transporte</span></div><div class="icon-item"><i class="fa-solid fa-bed"></i><span>Alojamiento</span></div><div class="icon-item"><i class="fa-solid fa-utensils"></i><span>Alimentación</span></div><div class="icon-item"><i class="fa-solid fa-leaf"></i><span>Ritual</span></div><div class="icon-item"><i class="fa-solid fa-user-shield"></i><span>Seguro</span></div><div class="icon-item"><i class="fa-solid fa-person-hiking"></i><span>Guianza</span></div>
+            </div>
+        </div>
+    </header>
+    <section class="intro-section"><div class="container intro-grid">
+        <div class="intro-description"><h2>El Llamado del Páramo</h2><p>Este no es un simple viaje, es una invitación a reconectar con la tierra y la sabiduría ancestral del Macizo Colombiano. En el Parque Nacional Puracé, caminarás por senderos sagrados, te maravillarás con el vuelo del cóndor y sentirás la energía de un ecosistema que es la cuna de los ríos más importantes de Colombia.</p></div>
+        <div class="tech-box"><h3>Ficha Técnica</h3><p><i class="fa-solid fa-map-marker-alt"></i><strong>Lugar:</strong> PNN Puracé, Cauca</p><p><i class="fa-solid fa-cloud"></i><strong>Clima:</strong> Frío de Páramo</p><p><i class="fa-solid fa-temperature-half"></i><strong>Temp:</strong> 4°C - 12°C</p><p><i class="fa-solid fa-signal"></i><strong>Dificultad:</strong> Media-Alta</p></div>
+    </div></section>
+    <section class="tabs-section"><div class="container">
+        <div class="tab-buttons"><button class="tab-btn active" data-tab="itinerary">Itinerario</button><button class="tab-btn" data-tab="gear">Qué Llevar</button></div>
+        <div id="itinerary" class="tab-content active">
+            <div class="itinerary-day"><h4>Día 1: Ruta Mensajero del Sol</h4><p class="itinerary-details">Salida de madrugada y desayuno en ruta. Ingreso al Parque para realizar la ruta "Mensajero del Sol": visita al mirador del cóndor, la laguna del Andulbio, el valle de los frailejones, el bebedero de las dantas y los termales de San Juan (contemplativos). Al finalizar, nos dirigimos al hospedaje con piscinas de aguas termales para descansar.</p></div>
+            <div class="itinerary-day"><h4>Día 2: Ruta Pululó Ancestral</h4><p class="itinerary-details">Después del desayuno, emprendemos la ruta "Pululó Ancestral". Una caminata de media dificultad donde visitaremos 3 impresionantes cascadas, una de ellas de agua termal. Almuerzo y posterior regreso a la ciudad de origen.</p></div>
+        </div>
+        <div id="gear" class="tab-content"><h2>Tu Equipo para el Páramo</h2><ul class="gear-list"><li><i class="fa-solid fa-check"></i>Chaqueta abrigada e impermeable</li><li><i class="fa-solid fa-check"></i>Botas de senderismo</li><li><i class="fa-solid fa-check"></i>Ropa de cambio (incluye medias)</li><li><i class="fa-solid fa-check"></i>Gorro, guantes y bufanda</li><li><i class="fa-solid fa-check"></i>Bloqueador solar</li><li><i class="fa-solid fa-check"></i>Termo para bebida caliente</li><li><i class="fa-solid fa-check"></i>Traje de baño y toalla</li><li><i class="fa-solid fa-check"></i>Snacks energéticos</li></ul></div>
+    </div></section>
+    <section class="details-section"><div class="container">
+        <center><h2>Detalles del Plan</h2></center>
+        <div class="details-grid">
+            <div><h3><i class="fa-solid fa-check-circle"></i> Incluido</h3><ul class="inclusion-list"><li>Transporte ida y regreso</li><li>Alojamiento 1 noche</li><li>1 Desayuno, 2 Almuerzos, 1 Cena, 1 Refrigerio</li><li>Recorrido Mensajero del Sol</li><li>Recorrido Pululó Ancestral</li><li>Tarjeta de Asistencia Médica</li><li>Coordinador de grupo y Guía local</li></ul></div>
+            <div><h3><i class="fa-solid fa-times-circle"></i> No Incluido</h3><ul class="inclusion-list"><li>Gastos no especificados en el plan</li></ul></div>
+        </div>
+    </div></section>
+    <section class="pricing-section"><div class="container">
+        <h2>Inversión en tu Aventura</h2>
+        <div class="pricing-grid">
+            <div class="price-card"><div class="scarcity-tag">¡CUPOS LIMITADOS!</div><p>Adultos</p><p class="price">$393.900</p></div>
+            <div class="price-card"><div class="scarcity-tag">¡CUPOS LIMITADOS!</div><p>Niños (4-10 años)</p><p class="price">$369.900</p></div>
+        </div>
+        <div class="pricing-cta"><a href="https://wa.me/573232911088?text=Hola,%20quiero%20reservar%20el%20viaje%20'Conexión%20Elemental'." target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡RESERVAR AHORA!</a></div>
+    </div></section>
+    <section class="faq-section"><div class="container">
+        <div class="faq-master-container" id="faq-master">
+            <div class="faq-master-question"><span>Preguntas Frecuentes</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question"><span>¿A dónde es este viaje?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Al Parque Nacional Natural Puracé, en el departamento del Cauca. Haremos dos rutas principales: Mensajero del Sol y Pululó Ancestral.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Qué días tienen salidas disponibles?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Nuestras salidas son programadas. Para este viaje, las fechas son: 14-15 Junio, 19-20 Julio, 23-24 Agosto, 20-21 Septiembre, 18-19 Octubre, 29-30 Noviembre.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿A qué hora comienza y termina la actividad?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Las salidas son de madrugada (aprox. 3:00 am). El regreso a la ciudad de origen comienza sobre las 4:00 pm del segundo día, llegando a tu hogar en la noche.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Habrá guía o acompañamiento?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Sí, además de ir con nuestro coordinador, el recorrido es guiado por guías locales, guardianes del territorio.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Qué debo llevar para el viaje?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Es indispensable llevar ropa abrigada en capas, chaqueta impermeable, gorro, guantes y botas de senderismo. No olvides bloqueador solar y un termo. Es clave llevar traje de baño para las piscinas termales del hospedaje.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Es apto para niños o personas mayores?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Debido a la altitud y la exigencia física, este viaje se recomienda para mayores de 12 años con buena condición física. No es aconsejable para adultos mayores con condiciones médicas preexistentes.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Puedo llevar a mi mascota?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>No. Para proteger el ecosistema frágil del páramo, no está permitido el ingreso de mascotas.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Cómo se puede pagar?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Aceptamos todo tipo de transferencia bancaria (Bancolombia, Nequi, Daviplata) o pago en efectivo.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Puedo reservar con un abono?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Sí, puedes reservar tu cupo con un anticipo de $50.000 por persona.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Con cuánto tiempo de anticipación debo reservar?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Nuestras salidas tienen cupos limitados. Te recomendamos reservar tan pronto como sea posible.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Qué pasa si no puedo asistir?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Entendemos que pueden surgir imprevistos. Para estos casos aplican nuestros términos y condiciones de cancelación, los cuales te serán compartidos al momento de tu reserva.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Tienen políticas de cambios o devoluciones?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Sí. Nuestras políticas de cambios y devoluciones están detalladas en los términos y condiciones que se entregan con cada plan.</p></div></div>
+            </div>
+        </div>
+    </div></section>
+    
+    <section class="cta-final"><div class="container">
+        <h2>¡No te quedes por fuera!</h2>
+        <p>La próxima salida se acerca. ¡Asegura tu cupo antes de que se agoten!</p>
+        <div id="countdown"><div class="time-block"><span id="days">00</span><span class="label">Días</span></div><div class="time-block"><span id="hours">00</span><span class="label">Horas</span></div><div class="time-block"><span id="minutes">00</span><span class="label">Minutos</span></div><div class="time-block"><span id="seconds">00</span><span class="label">Segundos</span></div></div>
+        <a href="https://wa.me/573232911088?text=Hola,%20estoy%20interesado%20en%20el%20viaje%20'Conexión%20Elemental'%20antes%20de%20que%20se%20agoten%20los%20cupos!" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡ASEGURAR MI CUPO!</a>
+    </div></section>
+    
+    <script>
+        const masterFaq = document.getElementById('faq-master');
+        masterFaq.addEventListener('click', (event) => { if (!event.target.closest('.faq-item')) { masterFaq.classList.toggle('active'); } });
+        const faqItems=document.querySelectorAll('.faq-item');
+        faqItems.forEach(item=>{item.addEventListener('click',()=>{item.classList.toggle('active')})});
+        const tabs=document.querySelectorAll('.tab-btn'),tabContents=document.querySelectorAll('.tab-content');tabs.forEach(t=>{t.addEventListener('click',()=>{const e=document.getElementById(t.dataset.tab);tabs.forEach(t=>t.classList.remove('active')),t.classList.add('active'),tabContents.forEach(t=>t.classList.remove('active')),e.classList.add('active')})});
+        const countdownDate = new Date("July 19, 2025 03:00:00").getTime();
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            document.getElementById("days").innerText = Math.floor(distance/(1000*60*60*24));
+            document.getElementById("hours").innerText = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+            document.getElementById("minutes").innerText = Math.floor((distance%(1000*60*60))/(1000*60));
+            document.getElementById("seconds").innerText = Math.floor((distance%(1000*60))/1000);
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "¡LA SALIDA YA PARTIÓ!";
+            }
+        }, 1000);
+    </script>
+
+<!-- INICIA EL SNIPPET DEL ASISTENTE DE CHAT (VERSIÓN DE DEPURACIÓN) -->
+<style>
+  /* Estilos generales para el widget del chat */
+  #chat-assistant-widget {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* Estilo del botón flotante */
+  #chat-float-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #0d6efd, #0a58ca);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+  }
+  #chat-float-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Estilo del panel del chat */
+  #chat-panel {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 90%;
+    max-width: 380px;
+    height: 70vh;
+    max-height: 550px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: none; /* Oculto por defecto */
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  #chat-panel.visible {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Encabezado del chat */
+  #chat-header {
+    background: linear-gradient(145deg, #0d6efd, #0a58ca);
+    color: white;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Contenedor de mensajes */
+  #chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #ffffff;
+  }
+
+  /* Estilo de cada mensaje */
+  .chat-message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 85%;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  .user-message {
+    background-color: #e9ecef;
+    color: #212529;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+  .assistant-message {
+    background-color: #0d6efd;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+
+  /* Indicador de "escribiendo..." */
+  .typing-indicator {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+  }
+  .typing-indicator span {
+    height: 8px;
+    width: 8px;
+    margin: 0 2px;
+    background-color: #9e9e9e;
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+  .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+  .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+  }
+
+  /* Formulario de entrada de texto */
+  #chat-form {
+    display: flex;
+    padding: 12px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+  }
+  #chat-input {
+    flex-grow: 1;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    padding: 10px 18px;
+    font-size: 16px;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #chat-input:focus {
+    border-color: #0d6efd;
+  }
+  #chat-submit {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+  }
+  #chat-submit:hover {
+    background-color: #0a58ca;
+  }
+</style>
+
+<!-- Estructura HTML del Widget de Chat -->
+<div id="chat-assistant-widget">
+  <!-- Panel del Chat (inicialmente oculto) -->
+  <div id="chat-panel">
+    <div id="chat-header">Asistente Virtual</div>
+    <div id="chat-messages">
+      <div class="chat-message assistant-message">
+        ¡Hola! 👋 ¿Cómo puedo ayudarte con este viaje?
+      </div>
+    </div>
+    <form id="chat-form">
+      <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off" required>
+      <button type="submit" id="chat-submit" aria-label="Enviar">
+        <!-- Ícono de Enviar (SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- Botón Flotante para abrir el chat -->
+  <button id="chat-float-button" aria-label="Abrir chat">
+    <!-- Ícono de Chat (SVG) -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.506 7-5.5S11.996 3 8 3 1 5.506 1 8.5c0 .99.246 1.93.678 2.785a1 1 0 0 1 .5 1.609Z"/>
+    </svg>
+  </button>
+</div>
+
+<!-- Lógica JavaScript del Chat -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Selección de elementos del DOM
+    const floatButton = document.getElementById('chat-float-button');
+    const chatPanel = document.getElementById('chat-panel');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const messagesContainer = document.getElementById('chat-messages');
+
+    // Función para abrir y cerrar el chat
+    floatButton.addEventListener('click', () => {
+      chatPanel.classList.toggle('visible');
+      if (chatPanel.classList.contains('visible')) {
+        chatInput.focus();
+      }
+    });
+
+    // Función para manejar el envío de preguntas
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userQuestion = chatInput.value.trim();
+      if (!userQuestion) return;
+
+      addMessage(userQuestion, 'user');
+      chatInput.value = '';
+      showTypingIndicator();
+
+      // Obtener el nombre del archivo de la página actual
+      const pathParts = window.location.pathname.split('/');
+      const currentPage = pathParts.pop() || 'index.html';
+
+      try {
+        // =================================================================
+        // ¡CAMBIO IMPORTANTE AQUÍ! Usamos la ruta directa a la función.
+        // =================================================================
+        const response = await fetch('/.netlify/functions/chat-assistant', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            page: currentPage,
+            question: userQuestion,
+          }),
+        });
+
+        removeTypingIndicator();
+        if (!response.ok) {
+          throw new Error(`Error del servidor: ${response.status}`);
+        }
+        const data = await response.json();
+        addMessage(data.answer, 'assistant');
+
+      } catch (error) {
+        console.error('Error al contactar al asistente:', error);
+        removeTypingIndicator();
+        addMessage('Lo siento, ocurrió un error. Por favor, intenta de nuevo.', 'assistant');
+      }
+    });
+
+    // Funciones de ayuda para manipular el chat
+    function addMessage(text, sender) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message', `${sender}-message`);
+      messageElement.textContent = text;
+      messagesContainer.appendChild(messageElement);
+      scrollToBottom();
+    }
+
+    function showTypingIndicator() {
+      const indicator = document.createElement('div');
+      indicator.classList.add('typing-indicator');
+      indicator.innerHTML = `<span></span><span></span><span></span>`;
+      messagesContainer.appendChild(indicator);
+      scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+      const indicator = messagesContainer.querySelector('.typing-indicator');
+      if (indicator) {
+        messagesContainer.removeChild(indicator);
+      }
+    }
+
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+  });
+</script>
+<!-- TERMINA EL SNIPPET DEL ASISTENTE DE CHAT -->
+</body>
+</html>

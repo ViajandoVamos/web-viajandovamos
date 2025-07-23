@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasadía a Salento y Valle del Cocora - Viajando Vamos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --color-primario: #27ae60; --color-secundario: #f1c40f; --blanco: #FFFFFF; --gris-claro: #f4f7f6; --texto-oscuro: #2c3e50; --font-titulos: 'Merienda', cursive; --font-texto: 'Montserrat', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-texto); background-color: var(--gris-claro); color: var(--texto-oscuro); }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+        .back-link { display: block; padding: 15px; text-align: center; background-color: #e9ecef; text-decoration: none; color: var(--texto-oscuro); font-weight: 700; font-size: 0.9rem; }
+        .back-link:hover { background-color: #dee2e6; }
+        .btn-whatsapp { display: inline-block; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; background-color: #25D366; color: var(--blanco); font-size: 1.2rem; text-align: center; margin-top: 20px; transition: transform 0.3s ease; }
+        .btn-whatsapp:hover { transform: scale(1.05); }
+        .product-hero { background-size: cover; background-position: center; padding: 60px 20px; text-align: center; color: var(--blanco); }
+        .product-hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; font-weight: 900; text-transform: uppercase; margin: 0; } .product-hero .subtitle { font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; } .product-hero .duration { font-size: 1.5rem; font-weight: 700; }
+        .hero-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 30px; }
+        .icon-item { text-align: center; width: 100px; } .icon-item i { font-size: 2.5rem; margin-bottom: 10px; } .icon-item span { font-size: 0.8rem; display: block; }
+        .section { padding: 60px 0; } .section-blanca { background: var(--blanco); }
+        .intro-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: flex-start; }
+        .intro-description h2 { font-family: var(--font-titulos); color: var(--color-primario); } .intro-description p { margin-bottom: 15px; line-height: 1.8; }
+        .tech-box { background: var(--gris-claro); border-radius: 10px; padding: 20px; } .tech-box h3 { font-size: 1.2rem; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; } .tech-box p { margin: 0 0 10px; } .tech-box i { margin-right: 10px; color: var(--color-secundario); }
+        .visual-itinerary h2 { text-align: center; margin-bottom: 40px; }
+        .itinerary-step { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; margin-bottom: 40px; }
+        .itinerary-step:nth-child(even) .step-image { order: -1; }
+        .step-image img { width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .step-description h4 { font-family: var(--font-titulos); color: var(--color-primario); font-size: 1.5rem; margin-bottom: 10px; }
+        .step-description p { line-height: 1.7; }
+        .info-section h2 { text-align: center; margin-bottom: 30px; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .info-card { background: var(--blanco); padding: 20px; border-radius: 10px; text-align: left; }
+        .info-card h3 { font-size: 1.2rem; margin-bottom: 15px; text-align: center;}
+        .info-card ul { list-style: none; padding: 0; } .info-card li { margin-bottom: 10px; }
+        .payment-icons { text-align: center;} .payment-icons i { font-size: 2rem; margin: 0 8px; }
+        .details-section { padding: 60px 0; background: var(--blanco); }
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
+        .inclusion-list { list-style: none; padding: 0; } .inclusion-list li { margin-bottom: 12px; } .inclusion-list i { margin-right: 10px; }
+        .fa-check-circle { color: #2ecc71; } .fa-times-circle { color: #e74c3c; }
+        .pricing-section { padding: 60px 0; } .pricing-section .container { max-width: 800px; }
+        .pricing-grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .price-card { background: var(--blanco); padding: 20px; border-radius: 10px; text-align: center; flex-grow: 1; border: 2px solid #ddd; position: relative; overflow:hidden; }
+        .price-card:hover { border-color: var(--color-primario); }
+        .price-card p { margin: 0; } .price-card .price { font-size: 1.8rem; font-weight: 700; color: var(--color-primario); }
+        .scarcity-tag { background-color: var(--color-secundario); color: white; padding: 5px 20px; position: absolute; top: 15px; right: -50px; transform: rotate(45deg); width: 200px; text-align: center; font-size: 0.8rem; font-weight: bold; }
+        .social-proof { margin-top: 20px; font-style: italic; color: #777; }
+        .pricing-cta { text-align: center; margin-top: 30px; }
+        .faq-section { padding: 60px 0; }
+        .faq-master-container { background: var(--blanco); border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .faq-master-question { padding: 20px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1.5rem; font-family: var(--font-titulos); color: var(--color-primario); }
+        .faq-master-question i { transition: transform 0.3s ease; }
+        .faq-master-container.active .faq-master-question i { transform: rotate(180deg); }
+        .faq-list { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
+        .faq-master-container.active .faq-list { max-height: 1200px; }
+        .faq-item { border-top: 1px solid #eee; }
+        .faq-question { padding: 15px 20px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 20px; background-color: var(--gris-claro); } .faq-answer p { padding: 20px 0; line-height: 1.7;}
+        .faq-item.active .faq-answer { max-height: 200px; } .faq-item .faq-question i { transition: transform 0.3s ease; } .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .cta-final { padding: 60px 20px; text-align: center; background:var(--blanco); }
+        .cta-final h2 { font-size: 2.5rem; }
+        @media (max-width: 768px) { .intro-grid, .itinerary-step, .details-grid, .info-grid { grid-template-columns: 1fr; } .itinerary-step:nth-child(even) .step-image { order: initial; } }
+    </style>
+</head>
+<body>
+    <a href="index.html#pasadias" class="back-link"><i class="fa-solid fa-arrow-left"></i> Volver a Todos los Pasadías</a>
+
+    <header class="product-hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/salento.jpg');">
+        <div class="container"><h1>Salento</h1><p class="subtitle">VALLE DEL COCORA Y FILANDIA</p><p class="duration">Pasadía</p>
+            <div class="hero-icons">
+                <div class="icon-item"><i class="fa-solid fa-bus"></i><span>Transporte</span></div><div class="icon-item"><i class="fa-solid fa-utensils"></i><span>Alimentación</span></div><div class="icon-item"><i class="fa-solid fa-camera-retro"></i><span>Pueblos Mágicos</span></div><div class="icon-item"><i class="fa-solid fa-tree"></i><span>Valle del Cocora</span></div><div class="icon-item"><i class="fa-solid fa-user-shield"></i><span>Seguro</span></div>
+            </div>
+        </div>
+    </header>
+    <section class="intro-section section"><div class="container intro-grid">
+        <div class="intro-description"><h2>El Corazón del Eje Cafetero</h2><p>Vive un día inmerso en la magia del Paisaje Cultural Cafetero. Recorre la icónica Calle Real de Salento, maravíllate con las palmas de cera más altas del mundo en el Valle del Cocora y déjate encantar por la autenticidad y los colores de Filandia. Una experiencia completa que combina naturaleza, cultura y los paisajes más bellos de Colombia.</p></div>
+        <div class="tech-box"><h3>Ficha Técnica</h3><p><i class="fa-solid fa-map-marker-alt"></i><strong>Lugar:</strong> Salento y Filandia, Quindío</p><p><i class="fa-solid fa-cloud-sun"></i><strong>Clima:</strong> Templado</p><p><i class="fa-solid fa-temperature-half"></i><strong>Temp:</strong> 15°C - 24°C</p><p><i class="fa-solid fa-signal"></i><strong>Dificultad:</strong> Baja / Cultural</p></div>
+    </div></section>
+    
+    <section class="visual-itinerary section">
+        <div class="container">
+            <h2>Un Día en el Corazón Cafetero</h2>
+            <div class="itinerary-step">
+                <div class="step-image"><img src="images/valle-de-cocora-step.jpg" alt="Palmas de Cera en el Valle del Cocora"></div>
+                <div class="step-description"><h4>Mañana: Valle del Cocora</h4><p>Comenzamos la aventura en el imponente Valle del Cocora, hogar de la palma de cera. Visitaremos los miradores más famosos para que te lleves la foto icónica de este paisaje único en el mundo.</p></div>
+            </div>
+            <div class="itinerary-step">
+                <div class="step-image"><img src="images/calle-real-salento-step.jpg" alt="Calle Real de Salento"></div>
+                <div class="step-description"><h4>Mediodía: Salento y sus Colores</h4><p>Después de un delicioso almuerzo típico, recorreremos la vibrante Calle Real de Salento. Tendrás tiempo para admirar su arquitectura, comprar artesanías y sentir la magia de uno de los pueblos más bellos de Colombia.</p></div>
+            </div>
+            <div class="itinerary-step">
+                <div class="step-image"><img src="images/mirador-filandia-step.jpg" alt="Mirador de Filandia"></div>
+                <div class="step-description"><h4>Tarde: La Colina Iluminada de Filandia</h4><p>Finalizamos nuestro recorrido en Filandia, un pueblo que te encantará por su autenticidad y sus espectaculares vistas panorámicas desde su famoso "Mirador Colina Iluminada".</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="details-section section-blanca"><div class="container">
+        <center><h2>Detalles del Plan</h2></center>
+        <div class="details-grid">
+            <div><h3><i class="fa-solid fa-check-circle"></i> Incluido</h3><ul class="inclusion-list"><li>Transporte ida y regreso en bus especial</li><li>Desayuno, Almuerzo y Refrigerio</li><li>Visita a Salento (Calle Real y Parque)</li><li>Visita al Valle del Cocora</li><li>Entrada al mirador "La vida es bella"</li><li>Visita a Filandia</li><li>Asistencia Médica y Coordinador de grupo</li></ul></div>
+            <div><h3><i class="fa-solid fa-times-circle"></i> No Incluido</h3><ul class="inclusion-list"><li>Paseo a Caballo</li><li>Entrada a otros miradores no especificados</li><li>Gastos personales y propinas</li></ul></div>
+        </div>
+    </div></section>
+
+    <section class="pricing-section section"><div class="container">
+        <h2>Inversión en tu Aventura</h2>
+        <div class="pricing-grid"><div class="price-card"><div class="scarcity-tag">¡ALTA DEMANDA!</div><p>Adultos</p><p class="price">$195.000</p></div><div class="price-card"><div class="scarcity-tag">¡ALTA DEMANDA!</div><p>Niños (3-5 años)</p><p class="price">$185.000</p></div></div>
+        <p class="social-proof">🔥 +15 personas han reservado para la próxima fecha.</p>
+        <div class="pricing-cta"><a href="https://wa.me/573232911088?text=Hola,%20estoy%20interesado%20en%20el%20pasadía%20a%20Salento." target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡RESERVAR AHORA!</a></div>
+    </div></section>
+    
+    <section class="info-section section-blanca"><div class="container">
+        <div class="info-grid">
+            <div class="info-card"><h3><i class="fa-solid fa-map-pin"></i> Salidas Desde Donde</h3><ul><li>Popayán (01:00 am)</li><li>Santander de Quilichao (03:00 am)</li><li>Cali (4:10 am y 4:40 am)</li><li>Y otros puntos como Villa Rica, Jamundí, Buga... ¡Consulta con tu asesor!</li></ul></div>
+            <div class="info-card"><h3><i class="fa-solid fa-credit-card"></i> Medios de Pago</h3><div class="payment-icons"><i class="fa-solid fa-money-bill-wave" title="Efectivo"></i><i class="fa-brands fa-cc-visa" title="Visa"></i><i class="fa-brands fa-cc-mastercard" title="Mastercard"></i><i class="fa-solid fa-qrcode" title="Nequi, Daviplata, etc."></i></div><p>Aceptamos Nequi, Bancolombia, Daviplata, tarjetas de crédito y efectivo.</p></div>
+        </div>
+    </div></section>
+
+    <section class="faq-section section"><div class="container">
+        <div class="faq-master-container" id="faq-master">
+            <div class="faq-master-question"><span>Preguntas Frecuentes</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question"><span>¿A dónde es la pasadía?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>A tres de los lugares más emblemáticos del Eje Cafetero: Salento, el Valle del Cocora y Filandia, todos en el Quindío.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>¿Qué días tienen salidas disponibles?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Nuestras salidas para este destino son: 15 Jun, 20 Jul, 17 Ago, 21 Sep, 19 Oct, 16 Nov.</p></div></div>
+            </div>
+        </div>
+    </div></section>
+    
+    <script>
+        const masterFaq = document.getElementById('faq-master');
+        masterFaq.addEventListener('click', (event) => { if (!event.target.closest('.faq-item')) { masterFaq.classList.toggle('active'); } });
+        const faqItems=document.querySelectorAll('.faq-item');
+        faqItems.forEach(item=>{item.addEventListener('click',()=>{item.classList.toggle('active')})});
+    </script>
+
+<!-- INICIA EL SNIPPET DEL ASISTENTE DE CHAT (VERSIÓN DE DEPURACIÓN) -->
+<style>
+  /* Estilos generales para el widget del chat */
+  #chat-assistant-widget {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* Estilo del botón flotante */
+  #chat-float-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #0d6efd, #0a58ca);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+  }
+  #chat-float-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Estilo del panel del chat */
+  #chat-panel {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 90%;
+    max-width: 380px;
+    height: 70vh;
+    max-height: 550px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: none; /* Oculto por defecto */
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  #chat-panel.visible {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Encabezado del chat */
+  #chat-header {
+    background: linear-gradient(145deg, #0d6efd, #0a58ca);
+    color: white;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Contenedor de mensajes */
+  #chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #ffffff;
+  }
+
+  /* Estilo de cada mensaje */
+  .chat-message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 85%;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  .user-message {
+    background-color: #e9ecef;
+    color: #212529;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+  .assistant-message {
+    background-color: #0d6efd;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+
+  /* Indicador de "escribiendo..." */
+  .typing-indicator {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+  }
+  .typing-indicator span {
+    height: 8px;
+    width: 8px;
+    margin: 0 2px;
+    background-color: #9e9e9e;
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+  .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+  .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+  }
+
+  /* Formulario de entrada de texto */
+  #chat-form {
+    display: flex;
+    padding: 12px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+  }
+  #chat-input {
+    flex-grow: 1;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    padding: 10px 18px;
+    font-size: 16px;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #chat-input:focus {
+    border-color: #0d6efd;
+  }
+  #chat-submit {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+  }
+  #chat-submit:hover {
+    background-color: #0a58ca;
+  }
+</style>
+
+<!-- Estructura HTML del Widget de Chat -->
+<div id="chat-assistant-widget">
+  <!-- Panel del Chat (inicialmente oculto) -->
+  <div id="chat-panel">
+    <div id="chat-header">Asistente Virtual</div>
+    <div id="chat-messages">
+      <div class="chat-message assistant-message">
+        ¡Hola! 👋 ¿Cómo puedo ayudarte con este viaje?
+      </div>
+    </div>
+    <form id="chat-form">
+      <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off" required>
+      <button type="submit" id="chat-submit" aria-label="Enviar">
+        <!-- Ícono de Enviar (SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- Botón Flotante para abrir el chat -->
+  <button id="chat-float-button" aria-label="Abrir chat">
+    <!-- Ícono de Chat (SVG) -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.506 7-5.5S11.996 3 8 3 1 5.506 1 8.5c0 .99.246 1.93.678 2.785a1 1 0 0 1 .5 1.609Z"/>
+    </svg>
+  </button>
+</div>
+
+<!-- Lógica JavaScript del Chat -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Selección de elementos del DOM
+    const floatButton = document.getElementById('chat-float-button');
+    const chatPanel = document.getElementById('chat-panel');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const messagesContainer = document.getElementById('chat-messages');
+
+    // Función para abrir y cerrar el chat
+    floatButton.addEventListener('click', () => {
+      chatPanel.classList.toggle('visible');
+      if (chatPanel.classList.contains('visible')) {
+        chatInput.focus();
+      }
+    });
+
+    // Función para manejar el envío de preguntas
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userQuestion = chatInput.value.trim();
+      if (!userQuestion) return;
+
+      addMessage(userQuestion, 'user');
+      chatInput.value = '';
+      showTypingIndicator();
+
+      // Obtener el nombre del archivo de la página actual
+      const pathParts = window.location.pathname.split('/');
+      const currentPage = pathParts.pop() || 'index.html';
+
+      try {
+        // =================================================================
+        // ¡CAMBIO IMPORTANTE AQUÍ! Usamos la ruta directa a la función.
+        // =================================================================
+        const response = await fetch('/.netlify/functions/chat-assistant', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            page: currentPage,
+            question: userQuestion,
+          }),
+        });
+
+        removeTypingIndicator();
+        if (!response.ok) {
+          throw new Error(`Error del servidor: ${response.status}`);
+        }
+        const data = await response.json();
+        addMessage(data.answer, 'assistant');
+
+      } catch (error) {
+        console.error('Error al contactar al asistente:', error);
+        removeTypingIndicator();
+        addMessage('Lo siento, ocurrió un error. Por favor, intenta de nuevo.', 'assistant');
+      }
+    });
+
+    // Funciones de ayuda para manipular el chat
+    function addMessage(text, sender) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message', `${sender}-message`);
+      messageElement.textContent = text;
+      messagesContainer.appendChild(messageElement);
+      scrollToBottom();
+    }
+
+    function showTypingIndicator() {
+      const indicator = document.createElement('div');
+      indicator.classList.add('typing-indicator');
+      indicator.innerHTML = `<span></span><span></span><span></span>`;
+      messagesContainer.appendChild(indicator);
+      scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+      const indicator = messagesContainer.querySelector('.typing-indicator');
+      if (indicator) {
+        messagesContainer.removeChild(indicator);
+      }
+    }
+
+    function scrollToBottom() {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+  });
+</script>
+<!-- TERMINA EL SNIPPET DEL ASISTENTE DE CHAT -->
+
+
+
+
+
+
+
+
+
+</body>
+</html>

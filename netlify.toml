@@ -1,0 +1,7 @@
+# Contenido para netlify.toml
+
+[build]
+  # Este comando fuerza a Netlify a activar su motor de build
+  command = "echo 'Build process activated'"
+  # Directorio donde están tus funciones
+  functions = "netlify/functions"
